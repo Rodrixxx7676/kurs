@@ -770,49 +770,6 @@ h1, h2, h3,
 
 /* ===== FOOTER ===== (ver estilos completos abajo, en sección nuevas) */
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  /* ── Navbar ── */
-  .navbar {
-    width: calc(100% - 28px);
-    padding: 10px 14px;
-    grid-template-columns: 1fr auto; /* logo | hamburger */
-  }
-  .nav-links    { display: none; }
-  .nav-auth     { display: none; }
-  .nav-hamburger { display: flex; }
-
-  /* ── Hero ── */
-  .hero {
-    flex-direction: column-reverse;
-    padding: 100px 24px 56px;
-    text-align: center;
-    gap: 32px;
-  }
-  .hero-content { max-width: 100%; }
-  .hero-visual  { width: 220px; height: 220px; }
-  .ring-outer   { width: 200px; height: 200px; }
-  .ring-mid     { width: 138px; height: 138px; }
-  .hero-logo-wrap { width: 120px; height: 120px; }
-  .hero-logo-img  { width: 110px; height: 110px; }
-  .hero-actions { justify-content: center; }
-  .hero-title   { font-size: clamp(30px, 8vw, 48px); }
-
-  /* ── Secciones padding ── */
-  .servicios, .stats, .cta-section { padding-left: 20px; padding-right: 20px; }
-  .servicios { padding-top: 48px; padding-bottom: 60px; }
-
-  /* ── Cards ── */
-  .cards-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-
-  /* ── CTA ── */
-  .cta-card { padding: 52px 28px; }
-
-  /* ── Footer ── */
-  .footer { flex-direction: column; gap: 16px; text-align: center; padding: 40px 20px; }
-}
-
 /* ===== NAV AUTH (Iniciar sesión / Registrarse) ===== */
 .nav-auth { display: flex; align-items: center; gap: 8px; justify-content: flex-end; align-self: center; }
 
@@ -992,26 +949,7 @@ a.nav-pill-name:hover { color: #fff; }
   color: rgba(255,255,255,0.5);
 }
 
-/* Responsive nuevas secciones */
-@media (max-width: 900px) {
-  .promise-card       { flex-direction: column; padding: 36px 24px; text-align: center; }
-  .promise-icon       { margin: 0 auto; }
-  .promise-cta        { width: 100%; text-align: center; justify-content: center; }
-  .promise-section    { padding: 0 20px 60px; }
-  .benefits-section   { padding: 40px 20px 60px; }
-  .benefits-grid      { grid-template-columns: repeat(2, 1fr); }
-  .footer-contacts    { flex-direction: column; align-items: center; gap: 14px; }
-}
-@media (max-width: 480px) {
-  .benefits-grid      { grid-template-columns: 1fr; }
-  .stats-grid         { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .stat-number        { font-size: 36px; }
-  .hero-title         { font-size: clamp(28px, 9vw, 42px); }
-  .hero-sub           { font-size: 14px; }
-  .btn-primary, .btn-ghost { font-size: 11px; }
-  .section-header h2  { font-size: clamp(22px, 6vw, 34px); }
-  .cta-card           { padding: 40px 20px; }
-}
+/* Placeholder — responsive consolidado al final del archivo */
 
 /* ===== CARD ICON con Tabler Icons ===== */
 .card-icon i {
@@ -1071,4 +1009,63 @@ a.nav-pill-name:hover { color: #fff; }
 @media (max-width: 600px) {
   .cookie-banner  { flex-direction: column; text-align: center; padding: 24px 20px; }
   .cookie-actions { justify-content: center; }
+}
+
+/* ============================================================
+   RESPONSIVE — va al final para no ser sobreescrito
+   ============================================================ */
+@media (max-width: 900px) {
+  /* ── Navbar ── */
+  .navbar {
+    width: calc(100% - 28px);
+    padding: 10px 14px;
+    grid-template-columns: 1fr auto; /* logo | hamburger */
+  }
+  .nav-links     { display: none; }
+  .nav-auth      { display: none; }
+  .nav-hamburger { display: flex; }
+
+  /* ── Hero ── */
+  .hero {
+    flex-direction: column-reverse;
+    padding: 100px 24px 56px;
+    text-align: center;
+    gap: 32px;
+  }
+  .hero-content   { max-width: 100%; }
+  .hero-visual    { width: 220px; height: 220px; }
+  .ring-outer     { width: 200px; height: 200px; }
+  .ring-mid       { width: 138px; height: 138px; }
+  .hero-logo-wrap { width: 120px; height: 120px; }
+  .hero-logo-img  { width: 110px; height: 110px; }
+  .hero-actions   { justify-content: center; }
+  .hero-title     { font-size: clamp(30px, 8vw, 48px); }
+
+  /* ── Secciones ── */
+  .servicios, .stats, .cta-section { padding-left: 20px; padding-right: 20px; }
+  .servicios      { padding-top: 48px; padding-bottom: 60px; }
+  .cards-grid     { grid-template-columns: 1fr; }
+  .stats-grid     { grid-template-columns: repeat(2, 1fr); }
+  .cta-card       { padding: 52px 28px; }
+  .footer         { flex-direction: column; gap: 16px; text-align: center; padding: 40px 20px; }
+
+  /* ── Promise / Benefits ── */
+  .promise-card    { flex-direction: column; padding: 36px 24px; text-align: center; }
+  .promise-icon    { margin: 0 auto; }
+  .promise-cta     { width: 100%; text-align: center; justify-content: center; }
+  .promise-section { padding: 0 20px 60px; }
+  .benefits-section { padding: 40px 20px 60px; }
+  .benefits-grid   { grid-template-columns: repeat(2, 1fr); }
+  .footer-contacts { flex-direction: column; align-items: center; gap: 14px; }
+}
+
+@media (max-width: 480px) {
+  .benefits-grid    { grid-template-columns: 1fr; }
+  .stats-grid       { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-number      { font-size: 36px; }
+  .hero-title       { font-size: clamp(28px, 9vw, 42px); }
+  .hero-sub         { font-size: 14px; }
+  .btn-primary, .btn-ghost { font-size: 11px; }
+  .section-header h2 { font-size: clamp(22px, 6vw, 34px); }
+  .cta-card         { padding: 40px 20px; }
 }

@@ -1,0 +1,236 @@
+/* ============================================================
+   KURS — Proveedores.css
+   Portal de Proveedores + Banner de Cookies
+   ============================================================ */
+
+/* ── HERO ── */
+.prov-hero {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 160px 40px 70px;
+}
+.prov-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900; letter-spacing: 0.03em; text-transform: uppercase;
+  line-height: 1.15; margin: 18px 0 16px;
+}
+.prov-hero p {
+  font-family: var(--font-body); font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,0.52); line-height: 1.7; max-width: 540px; margin: 0 auto;
+}
+
+/* ── BENEFICIOS ── */
+.prov-benefits {
+  position: relative; z-index: 2;
+  max-width: 1140px; margin: 0 auto;
+  padding: 0 40px 80px;
+}
+.prov-benefits-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 20px;
+}
+.prov-benefit-card {
+  border-radius: var(--radius-lg);
+  padding: 32px 22px;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: transform 0.25s;
+}
+.prov-benefit-card:hover { transform: translateY(-5px); }
+.prov-benefit-card > i { font-size: 28px; color: rgba(255,255,255,0.65); }
+.prov-benefit-card h3 {
+  font-family: var(--font-display); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase; line-height: 1.4;
+}
+.prov-benefit-card p {
+  font-family: var(--font-body); font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.48); line-height: 1.65;
+}
+
+/* ── REQUISITOS ── */
+.prov-requisitos {
+  position: relative; z-index: 2;
+  max-width: 1140px; margin: 0 auto;
+  padding: 0 40px 80px;
+}
+.prov-req-grid {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 16px;
+  margin-top: 48px;
+}
+.prov-req-item {
+  border-radius: var(--radius-lg);
+  padding: 28px 28px;
+  display: flex; align-items: flex-start; gap: 20px;
+}
+.req-num {
+  font-family: var(--font-display); font-size: 28px; font-weight: 900;
+  color: rgba(255,255,255,0.12); flex-shrink: 0; line-height: 1;
+}
+.prov-req-item h4 {
+  font-family: var(--font-display); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;
+}
+.prov-req-item p {
+  font-family: var(--font-body); font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.48); line-height: 1.6;
+}
+
+/* ── FORMULARIO ── */
+.prov-form-section {
+  position: relative; z-index: 2;
+  max-width: 860px; margin: 0 auto;
+  padding: 0 40px 120px;
+  text-align: center;
+}
+.prov-form-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.8vw, 34px); font-weight: 900;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  margin-bottom: 36px;
+}
+.prov-form {
+  border-radius: var(--radius-xl);
+  padding: 44px;
+  display: flex; flex-direction: column; gap: 20px;
+  text-align: left;
+}
+.prov-form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.prov-form-group {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.prov-form-group.full-width { grid-column: 1 / -1; }
+.prov-form-group label {
+  font-family: var(--font-display); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.req-star { color: rgba(255,100,100,0.8); }
+
+.input-wrap { position: relative; display: flex; align-items: center; }
+.input-wrap > i {
+  position: absolute; left: 14px; font-size: 16px;
+  color: rgba(255,255,255,0.28); pointer-events: none; z-index: 1;
+}
+.input-wrap input,
+.input-wrap select,
+.input-wrap textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  color: var(--white);
+  font-family: var(--font-body); font-size: 14px; font-weight: 300;
+  padding: 13px 16px 13px 44px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+.input-wrap textarea { padding-top: 14px; resize: vertical; min-height: 110px; }
+.input-wrap select option { background: #1a1a2e; color: #fff; }
+.input-wrap input:focus,
+.input-wrap select:focus,
+.input-wrap textarea:focus {
+  border-color: rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.08);
+}
+.input-wrap input::placeholder,
+.input-wrap textarea::placeholder { color: rgba(255,255,255,0.2); }
+
+.prov-error {
+  font-family: var(--font-body); font-size: 12px;
+  color: rgba(255,100,100,0.85); text-align: center;
+}
+.prov-submit { display: flex; justify-content: center; margin-top: 4px; }
+.btn-send {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 36px; border-radius: 999px;
+  font-family: var(--font-display); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border: none; cursor: pointer;
+  transition: transform 0.2s;
+}
+.btn-send:hover { transform: translateY(-2px); }
+
+.prov-success {
+  border-radius: var(--radius-xl);
+  padding: 60px 40px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  animation: fade-up 0.5s ease both;
+}
+.prov-success i { font-size: 56px; color: #4ade80; }
+.prov-success h3 {
+  font-family: var(--font-display); font-size: 20px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.prov-success p {
+  font-family: var(--font-body); color: rgba(255,255,255,0.5);
+  font-weight: 300; text-align: center; max-width: 360px;
+}
+
+/* ══════════════════════════════════════════════
+   BANNER DE COOKIES
+   ══════════════════════════════════════════════ */
+.cookie-banner {
+  position: fixed;
+  bottom: -200px;           /* empieza oculto */
+  left: 50%; transform: translateX(-50%);
+  width: calc(100% - 48px); max-width: 860px;
+  border-radius: var(--radius-xl);
+  padding: 22px 28px;
+  display: flex; align-items: center; gap: 20px;
+  z-index: 999;
+  transition: bottom 0.45s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cookie-banner.show { bottom: 24px; }
+
+.cookie-icon { font-size: 30px; flex-shrink: 0; opacity: 0.8; }
+
+.cookie-text { flex: 1; }
+.cookie-text strong {
+  font-family: var(--font-display); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  display: block; margin-bottom: 5px;
+}
+.cookie-text p {
+  font-family: var(--font-body); font-size: 12px; font-weight: 300;
+  color: rgba(255,255,255,0.5); line-height: 1.55; margin: 0;
+}
+.cookie-link {
+  color: rgba(255,255,255,0.75); text-decoration: underline;
+  transition: color 0.2s;
+}
+.cookie-link:hover { color: var(--white); }
+
+.cookie-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+
+.cookie-btn-accept {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 22px; border-radius: 999px;
+  font-family: var(--font-display); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border: none; cursor: pointer;
+}
+.cookie-btn-reject {
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-body); font-size: 12px; font-weight: 300;
+  color: rgba(255,255,255,0.38); text-decoration: underline;
+  transition: color 0.2s; padding: 0;
+}
+.cookie-btn-reject:hover { color: rgba(255,255,255,0.7); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .prov-benefits-grid { grid-template-columns: repeat(2,1fr); }
+  .prov-req-grid      { grid-template-columns: 1fr; }
+  .prov-form-row      { grid-template-columns: 1fr; }
+  .prov-form          { padding: 28px 20px; }
+  .prov-form-section  { padding: 0 20px 80px; }
+  .prov-benefits      { padding: 0 20px 60px; }
+  .prov-requisitos    { padding: 0 20px 60px; }
+  .cookie-banner      { flex-direction: column; text-align: center; padding: 24px 20px; }
+  .cookie-actions     { flex-direction: row; justify-content: center; }
+}
+@media (max-width: 500px) {
+  .prov-benefits-grid { grid-template-columns: 1fr; }
+}

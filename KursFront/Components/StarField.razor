@@ -1,0 +1,36 @@
+@* Estrellas generadas con C# Blazor — animación 100% CSS, sin JS *@
+
+<div class="stars-layer" aria-hidden="true">
+    @foreach (var star in _stars)
+    {
+        <span class="star" style="@star"></span>
+    }
+</div>
+
+@code {
+    [Parameter] public int Count { get; set; } = 260;
+
+    private List<string> _stars = new();
+
+    protected override void OnInitialized()
+    {
+        // Generamos posiciones y tamaños con aritmética determinista (sin Random, sin JS)
+        for (int i = 0; i < Count; i++)
+        {
+            double top   = (i * 37.3 + 11.7) % 100;
+            double left  = (i * 61.7 + 5.3)  % 100;
+            double size  = 0.8 + (i % 8) * 0.22;
+            double delay = (i * 0.19)    % 7;
+            double dur   = 3 + (i % 6);
+
+            _stars.Add(
+                $"top:{top.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}%;" +
+                $"left:{left.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}%;" +
+                $"width:{size.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}px;" +
+                $"height:{size.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}px;" +
+                $"animation-delay:{delay.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}s;" +
+                $"animation-duration:{dur.ToString("F0", System.Globalization.CultureInfo.InvariantCulture)}s"
+            );
+        }
+    }
+}

@@ -1,0 +1,230 @@
+/* ============================================================
+   KURS — Login.css  (HTML version)
+   Estilos específicos de la página de inicio de sesión
+   ============================================================ */
+
+/* ── Keyframe reutilizado ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Contenedor centrado ── */
+.login-wrap {
+  position: relative; z-index: 2;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 100px 24px 60px;
+}
+
+/* ── Tarjeta principal ── */
+.login-card {
+  width: 100%; max-width: 440px;
+  border-radius: var(--radius-xl);
+  padding: 52px 44px 44px;
+  display: flex; flex-direction: column; align-items: center;
+  animation: fade-up 0.7s ease both;
+}
+
+/* ── Logo ── */
+.login-logo { margin-bottom: 20px; }
+.login-logo img { height: 54px; width: auto; }
+
+/* ── Textos superiores ── */
+.login-eyebrow {
+  font-family: var(--font-display);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 10px;
+}
+
+.login-title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 900; letter-spacing: 0.03em; text-transform: uppercase;
+  text-align: center; margin-bottom: 8px;
+}
+
+.login-sub {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.42);
+  text-align: center; line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+/* ── Campos ── */
+.login-fields {
+  width: 100%;
+  display: flex; flex-direction: column; gap: 18px;
+  margin-bottom: 20px;
+}
+
+.login-group {
+  display: flex; flex-direction: column; gap: 7px;
+}
+
+.login-group label {
+  font-family: var(--font-display);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+.login-input-wrap {
+  position: relative; display: flex; align-items: center;
+}
+
+.login-input-wrap > i {
+  position: absolute; left: 14px;
+  font-size: 16px; color: rgba(255,255,255,0.28);
+  pointer-events: none; z-index: 1;
+}
+
+.login-input-wrap input {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  color: var(--white);
+  font-family: var(--font-body); font-size: 14px; font-weight: 300;
+  padding: 13px 42px 13px 42px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+
+.login-input-wrap input:focus {
+  border-color: rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.08);
+}
+
+.login-input-wrap input::placeholder {
+  color: rgba(255,255,255,0.2);
+}
+
+/* Ojo para mostrar/ocultar contraseña */
+.toggle-pw {
+  position: absolute; right: 14px;
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.3);
+  font-size: 16px; display: flex; align-items: center;
+  transition: color 0.2s; padding: 0;
+}
+.toggle-pw:hover { color: rgba(255,255,255,0.7); }
+
+/* ── Olvidaste contraseña ── */
+.login-forgot {
+  align-self: flex-end;
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 300;
+  color: rgba(255,255,255,0.38);
+  text-decoration: none;
+  margin-top: -6px;
+  transition: color 0.2s;
+}
+.login-forgot:hover { color: rgba(255,255,255,0.75); }
+
+/* ── Error ── */
+.login-error {
+  font-family: var(--font-body);
+  font-size: 12px; font-weight: 300;
+  color: rgba(255,100,100,0.85);
+  text-align: center;
+  margin-top: -4px;
+}
+
+/* ── Botón enviar ── */
+.btn-login-submit {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 24px; border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border: none; cursor: pointer;
+  margin-top: 4px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-login-submit:hover { transform: translateY(-2px); }
+.btn-login-submit i { font-size: 16px; }
+
+/* ── Divisor ── */
+.login-divider {
+  width: 100%;
+  display: flex; align-items: center; gap: 12px;
+  margin: 24px 0 18px;
+}
+.login-divider::before,
+.login-divider::after {
+  content: ''; flex: 1;
+  height: 1px; background: rgba(255,255,255,0.09);
+}
+.login-divider span {
+  font-family: var(--font-body);
+  font-size: 10px; font-weight: 300;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* ── Registrarse ── */
+.login-register {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.38);
+  text-align: center;
+}
+.login-register a {
+  color: var(--white);
+  text-decoration: none; font-weight: 500;
+  transition: opacity 0.2s;
+}
+.login-register a:hover { opacity: 0.65; }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .login-card { padding: 36px 24px 32px; }
+}
+
+/* ── Indicadores de fortaleza de contraseña ─────────────────────────────── */
+.pw-strength {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+}
+.pw-strength.visible { display: flex; }
+
+.pw-rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pw-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  flex-shrink: 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pw-rule.ok .pw-dot {
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74,222,128,0.6);
+}
+
+.pw-label {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.38);
+  transition: color 0.3s ease;
+}
+.pw-rule.ok .pw-label { color: #4ade80; }

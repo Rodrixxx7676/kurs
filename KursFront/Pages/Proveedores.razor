@@ -1,0 +1,252 @@
+@page "/proveedores"
+
+<PageTitle>KURS — Portal de Proveedores</PageTitle>
+
+<StarField Count="260" />
+
+<div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+@* ══════════════ NAVBAR ══════════════ *@
+<nav class="navbar glass-bubble">
+    <div class="nav-logo">
+        <NavLink href="/">
+            <img src="images/LogoSolo.svg" alt="KURS" class="logo-img" />
+        </NavLink>
+    </div>
+    <ul class="nav-links">
+        <li><NavLink href="/#servicios"><i class="ti ti-briefcase"></i> Servicios</NavLink></li>
+        <li><NavLink href="/#nosotros"><i class="ti ti-users"></i> Nosotros</NavLink></li>
+        <li><NavLink href="contacto"><i class="ti ti-message-circle"></i> Contacto</NavLink></li>
+        <li><NavLink href="proveedores" class="active"><i class="ti ti-truck-delivery"></i> Proveedores</NavLink></li>
+    </ul>
+    <div class="nav-auth">
+        <NavLink href="login" class="btn-login"><i class="ti ti-user"></i> Iniciar sesión</NavLink>
+        <NavLink href="registro" class="btn-register glass-bubble-btn"><i class="ti ti-user-plus"></i> Registrarse</NavLink>
+    </div>
+</nav>
+
+@* ══════════════ HERO ══════════════ *@
+<div class="prov-hero">
+    <span class="section-tag glass-bubble"><i class="ti ti-truck-delivery"></i> Portal de Proveedores</span>
+    <h1>Sé parte de la <span class="gradient-text">red KURS</span></h1>
+    <p>Conectamos empresas tecnológicas con oportunidades reales.<br />Regístrate, postula a licitaciones y crece con nosotros.</p>
+</div>
+
+@* ══════════════ BENEFICIOS ══════════════ *@
+<section class="prov-benefits">
+    <div class="prov-benefits-grid">
+
+        <div class="prov-benefit-card glass-bubble">
+            <i class="ti ti-file-invoice"></i>
+            <h3>Acceso a licitaciones</h3>
+            <p>Consulta y postula a todos los procesos de compra de KURS en un solo lugar.</p>
+        </div>
+
+        <div class="prov-benefit-card glass-bubble">
+            <i class="ti ti-clock-check"></i>
+            <h3>Pagos puntuales</h3>
+            <p>Comprometidos con el pago en los plazos acordados. Tu confianza es nuestra prioridad.</p>
+        </div>
+
+        <div class="prov-benefit-card glass-bubble">
+            <i class="ti ti-refresh"></i>
+            <h3>Relación a largo plazo</h3>
+            <p>Buscamos aliados estratégicos, no solo proveedores puntuales. Creemos en el crecimiento mutuo.</p>
+        </div>
+
+        <div class="prov-benefit-card glass-bubble">
+            <i class="ti ti-shield-check"></i>
+            <h3>Proceso transparente</h3>
+            <p>Evaluaciones claras, criterios públicos y comunicación directa en cada etapa del proceso.</p>
+        </div>
+
+    </div>
+</section>
+
+@* ══════════════ REQUISITOS ══════════════ *@
+<section class="prov-requisitos">
+    <div class="section-header">
+        <span class="section-tag glass-bubble">¿Qué necesitas?</span>
+        <h2>Requisitos para <span class="gradient-text">registrarte</span></h2>
+    </div>
+    <div class="prov-req-grid">
+
+        <div class="prov-req-item glass-bubble">
+            <span class="req-num">01</span>
+            <div>
+                <h4>RUC activo y habido</h4>
+                <p>Empresa debidamente constituida y con RUC vigente en SUNAT.</p>
+            </div>
+        </div>
+
+        <div class="prov-req-item glass-bubble">
+            <span class="req-num">02</span>
+            <div>
+                <h4>Ficha RUC y vigencia de poder</h4>
+                <p>Documentos actualizados del representante legal de la empresa.</p>
+            </div>
+        </div>
+
+        <div class="prov-req-item glass-bubble">
+            <span class="req-num">03</span>
+            <div>
+                <h4>Experiencia en el rubro TI</h4>
+                <p>Mínimo 1 año de experiencia en tecnología, software o servicios digitales.</p>
+            </div>
+        </div>
+
+        <div class="prov-req-item glass-bubble">
+            <span class="req-num">04</span>
+            <div>
+                <h4>No estar impedido de contratar</h4>
+                <p>No figurar en el Registro de Proveedores Inhabilitados del OSCE.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@* ══════════════ FORMULARIO ══════════════ *@
+<section class="prov-form-section" id="registro-proveedor">
+    <h2>Regístrate como <span class="gradient-text">proveedor</span></h2>
+
+    @if (_enviado)
+    {
+        <div class="prov-success glass-bubble">
+            <i class="ti ti-circle-check"></i>
+            <h3>¡Solicitud enviada!</h3>
+            <p>Revisaremos tu información y nos pondremos en contacto en los próximos 3 días hábiles.</p>
+            <NavLink href="/" class="btn-primary glass-bubble-btn" style="margin-top:20px;display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:999px;text-decoration:none;">
+                <i class="ti ti-home"></i> Volver al inicio
+            </NavLink>
+        </div>
+    }
+    else
+    {
+        <div class="prov-form glass-bubble">
+
+            <div class="prov-form-row">
+                <div class="prov-form-group">
+                    <label>Razón Social <span class="req-star">*</span></label>
+                    <div class="input-wrap"><i class="ti ti-building"></i>
+                        <input type="text" placeholder="Nombre legal de tu empresa"
+                               @bind="_razonSocial" @bind:event="oninput" />
+                    </div>
+                </div>
+                <div class="prov-form-group">
+                    <label>RUC <span class="req-star">*</span></label>
+                    <div class="input-wrap"><i class="ti ti-id-badge"></i>
+                        <input type="text" placeholder="20XXXXXXXXX" maxlength="11"
+                               @bind="_ruc" @bind:event="oninput" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="prov-form-row">
+                <div class="prov-form-group">
+                    <label>Nombre del Representante Legal <span class="req-star">*</span></label>
+                    <div class="input-wrap"><i class="ti ti-user"></i>
+                        <input type="text" placeholder="Nombre completo"
+                               @bind="_representante" @bind:event="oninput" />
+                    </div>
+                </div>
+                <div class="prov-form-group">
+                    <label>Correo Corporativo <span class="req-star">*</span></label>
+                    <div class="input-wrap"><i class="ti ti-mail"></i>
+                        <input type="email" placeholder="contacto@tuempresa.com"
+                               @bind="_email" @bind:event="oninput" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="prov-form-row">
+                <div class="prov-form-group">
+                    <label>Teléfono / WhatsApp <span class="req-star">*</span></label>
+                    <div class="input-wrap"><i class="ti ti-phone"></i>
+                        <input type="tel" placeholder="+51 9XX XXX XXX"
+                               @bind="_telefono" @bind:event="oninput" />
+                    </div>
+                </div>
+                <div class="prov-form-group">
+                    <label>Categoría principal <span class="req-star">*</span></label>
+                    <div class="input-wrap"><i class="ti ti-category"></i>
+                        <select @bind="_categoria">
+                            <option value="">Selecciona una categoría</option>
+                            <option>Hardware y equipos</option>
+                            <option>Software y licencias</option>
+                            <option>Servicios de implementación TI</option>
+                            <option>Desarrollo de software</option>
+                            <option>Ciberseguridad</option>
+                            <option>Cloud y hosting</option>
+                            <option>Soporte técnico</option>
+                            <option>Otros servicios TI</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prov-form-group full-width">
+                <label>Descripción de servicios / productos</label>
+                <div class="input-wrap">
+                    <i class="ti ti-message" style="position:absolute;left:16px;top:14px;"></i>
+                    <textarea placeholder="Cuéntanos qué ofrece tu empresa, experiencia y proyectos relevantes..."
+                              @bind="_descripcion" @bind:event="oninput"></textarea>
+                </div>
+            </div>
+
+            <div class="prov-form-group full-width">
+                <label>Página web o portafolio <span style="opacity:.5;font-size:11px;">(opcional)</span></label>
+                <div class="input-wrap"><i class="ti ti-world"></i>
+                    <input type="url" placeholder="https://tuempresa.com"
+                           @bind="_web" @bind:event="oninput" />
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(_error))
+            {
+                <p class="prov-error">@_error</p>
+            }
+
+            <div class="prov-submit">
+                <button class="btn-send glass-bubble-btn" @onclick="Enviar" disabled="@_enviando">
+                    @if (_enviando)
+                    {
+                        <i class="ti ti-loader-2 spin"></i><span>Enviando...</span>
+                    }
+                    else
+                    {
+                        <i class="ti ti-send"></i><span>Enviar solicitud</span>
+                    }
+                </button>
+            </div>
+
+        </div>
+    }
+</section>
+
+@* ══════════════ FOOTER ══════════════ *@
+<footer class="footer">
+    <div class="footer-brand">
+        <img src="images/LogoSinFondo.svg" alt="KURS" class="footer-logo-img" />
+        <p class="footer-slogan">Tecnología que marca tu rumbo.</p>
+    </div>
+    <div class="footer-contacts">
+        <a href="mailto:kurs.company.com@gmail.com" class="footer-link">
+            <i class="ti ti-mail"></i> kurs.company.com&#64;gmail.com
+        </a>
+        <a href="https://wa.me/51949238917" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-whatsapp"></i> +51 949 238 917
+        </a>
+        <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-instagram"></i> &#64;kurs.pe
+        </a>
+        <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-tiktok"></i> &#64;kurs.pe
+        </a>
+    </div>
+    <p class="footer-copy">© @DateTime.Now.Year KURS. Todos los derechos reservados.</p>
+</footer>

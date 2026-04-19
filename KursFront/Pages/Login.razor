@@ -1,0 +1,106 @@
+@page "/login"
+
+<PageTitle>KURS — Iniciar sesión</PageTitle>
+
+<StarField Count="260" />
+
+<div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+@* ══════════════ LOGIN CARD ══════════════ *@
+<div class="login-wrap">
+    <div class="login-card glass-bubble">
+
+        @* Logo *@
+        <div class="login-logo">
+            <img src="images/LogoSolo.svg" alt="KURS" />
+        </div>
+
+        <p class="login-eyebrow">Portal de acceso</p>
+        <h1 class="login-title">Iniciar <span class="gradient-text">sesión</span></h1>
+        <p class="login-sub">Bienvenido de vuelta. Ingresa tus credenciales para continuar.</p>
+
+        <div class="login-fields">
+
+            <div class="login-group">
+                <label>Correo electrónico</label>
+                <div class="login-input-wrap">
+                    <i class="ti ti-mail"></i>
+                    <input type="email" placeholder="tu@correo.com"
+                           @bind="_email" @bind:event="oninput" />
+                </div>
+            </div>
+
+            <div class="login-group">
+                <label>Contraseña</label>
+                <div class="login-input-wrap">
+                    <i class="ti ti-lock"></i>
+                    <input type="@(_mostrarPw ? "text" : "password")"
+                           placeholder="••••••••"
+                           @bind="_password" @bind:event="oninput" />
+                    <button type="button" class="toggle-pw"
+                            @onclick="() => _mostrarPw = !_mostrarPw"
+                            aria-label="Mostrar contraseña">
+                        <i class="@(_mostrarPw ? "ti ti-eye-off" : "ti ti-eye")"></i>
+                    </button>
+                </div>
+            </div>
+
+            <a href="#" class="login-forgot">¿Olvidaste tu contraseña?</a>
+
+            @if (!string.IsNullOrEmpty(_error))
+            {
+                <p class="login-error">@_error</p>
+            }
+
+            <button class="btn-login-submit glass-bubble-btn"
+                    @onclick="Ingresar" disabled="@_cargando">
+                @if (_cargando)
+                {
+                    <i class="ti ti-loader-2 spin"></i>
+                    <span>Ingresando...</span>
+                }
+                else
+                {
+                    <i class="ti ti-arrow-right"></i>
+                    <span>Entrar</span>
+                }
+            </button>
+
+        </div>
+
+        <div class="login-divider"><span>¿nuevo aquí?</span></div>
+
+        <p class="login-register">
+            ¿No tienes cuenta?
+            <NavLink href="registro">Regístrate gratis</NavLink>
+        </p>
+
+    </div>
+</div>
+
+@* ══════════════ FOOTER ══════════════ *@
+<footer class="footer">
+    <div class="footer-brand">
+        <img src="images/LogoSinFondo.svg" alt="KURS" class="footer-logo-img" />
+        <p class="footer-slogan">Tecnología que marca tu rumbo.</p>
+    </div>
+    <div class="footer-contacts">
+        <a href="mailto:kurs.company.com@gmail.com" class="footer-link">
+            <i class="ti ti-mail"></i> kurs.company.com&#64;gmail.com
+        </a>
+        <a href="https://wa.me/51949238917" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-whatsapp"></i> +51 949 238 917
+        </a>
+        <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-instagram"></i> &#64;kurs.pe
+        </a>
+        <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-tiktok"></i> &#64;kurs.pe
+        </a>
+    </div>
+    <p class="footer-copy">© @DateTime.Now.Year KURS. Todos los derechos reservados.</p>
+</footer>

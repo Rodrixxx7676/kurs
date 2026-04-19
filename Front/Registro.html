@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KURS — Crear cuenta</title>
+  <link rel="icon" type="image/svg+xml" href="../Images/LogoSinFondo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.22.0/dist/tabler-icons.min.css" />
+  <link rel="stylesheet" href="PagePrincipal.css" />
+  <link rel="stylesheet" href="Login.css" />
+</head>
+<body>
+
+  <!-- ── Estrellas CSS ── -->
+  <div class="stars-wrap" aria-hidden="true">
+    <div class="stars-s"></div>
+    <div class="stars-m"></div>
+    <div class="stars-l"></div>
+  </div>
+
+  <!-- ── Orbes ── -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ══════════════ REGISTRO CARD ══════════════ -->
+  <div class="login-wrap">
+    <div class="login-card glass-bubble">
+
+      <!-- Logo -->
+      <div class="login-logo">
+        <a href="PagePrincipal.html">
+          <img src="../Images/LogoSolo.svg" alt="KURS" />
+        </a>
+      </div>
+
+      <p class="login-eyebrow">Comienza gratis hoy</p>
+      <h1 class="login-title">Crear <span class="gradient-text">cuenta</span></h1>
+      <p class="login-sub">Únete a KURS y marca tu rumbo hacia el futuro digital.</p>
+
+      <form class="login-fields" id="registroForm" novalidate>
+
+        <!-- Nombre -->
+        <div class="login-group">
+          <label>Nombre completo</label>
+          <div class="login-input-wrap">
+            <i class="ti ti-user"></i>
+            <input type="text" id="nombre" placeholder="Tu nombre completo"
+                   autocomplete="name" required />
+          </div>
+        </div>
+
+        <!-- Empresa (opcional) -->
+        <div class="login-group">
+          <label>Empresa <span style="opacity:.4;font-size:8px;letter-spacing:.1em;">(opcional)</span></label>
+          <div class="login-input-wrap">
+            <i class="ti ti-building"></i>
+            <input type="text" id="empresa" placeholder="Nombre de tu empresa"
+                   autocomplete="organization" />
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="login-group">
+          <label>Correo electrónico</label>
+          <div class="login-input-wrap">
+            <i class="ti ti-mail"></i>
+            <input type="email" id="email" placeholder="tu@correo.com"
+                   autocomplete="email" required />
+          </div>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="login-group">
+          <label>Contraseña</label>
+          <div class="login-input-wrap">
+            <i class="ti ti-lock"></i>
+            <input type="password" id="password" placeholder="Mínimo 7 caracteres"
+                   autocomplete="new-password" required />
+            <button type="button" class="toggle-pw" id="togglePw" tabindex="-1">
+              <i class="ti ti-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+
+          <!-- Indicadores de fortaleza -->
+          <div class="pw-strength" id="pwStrength">
+            <div class="pw-rule" id="rule-len">
+              <span class="pw-dot"></span>
+              <span class="pw-label">Mínimo 7 caracteres</span>
+            </div>
+            <div class="pw-rule" id="rule-upper">
+              <span class="pw-dot"></span>
+              <span class="pw-label">Una letra mayúscula</span>
+            </div>
+            <div class="pw-rule" id="rule-num">
+              <span class="pw-dot"></span>
+              <span class="pw-label">Un número</span>
+            </div>
+            <div class="pw-rule" id="rule-special">
+              <span class="pw-dot"></span>
+              <span class="pw-label">Un carácter especial (!@#$...)</span>
+            </div>
+            <div class="pw-rule" id="rule-match">
+              <span class="pw-dot"></span>
+              <span class="pw-label">Las contraseñas coinciden</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirmar contraseña -->
+        <div class="login-group">
+          <label>Confirmar contraseña</label>
+          <div class="login-input-wrap">
+            <i class="ti ti-lock-check"></i>
+            <input type="password" id="confirm" placeholder="Repite tu contraseña"
+                   autocomplete="new-password" required />
+          </div>
+        </div>
+
+        <p class="login-error" id="regError" style="display:none;"></p>
+
+        <button type="submit" class="btn-login-submit glass-bubble-btn">
+          <i class="ti ti-user-plus"></i> Crear cuenta
+        </button>
+
+      </form>
+
+      <div class="login-divider"><span>¿ya tienes cuenta?</span></div>
+
+      <p class="login-register">
+        ¿Ya tienes cuenta?
+        <a href="Login.html">Iniciar sesión</a>
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <img src="../Images/LogoSinFondo.svg" alt="KURS" class="footer-logo-img" />
+      <p class="footer-slogan">Tecnología que marca tu rumbo.</p>
+    </div>
+    <div class="footer-contacts">
+      <a href="mailto:kurs.company.com@gmail.com" class="footer-link">
+        <i class="ti ti-mail"></i> kurs.company.com@gmail.com
+      </a>
+      <a href="https://wa.me/51949238917" target="_blank" rel="noopener" class="footer-link">
+        <i class="ti ti-brand-whatsapp"></i> +51 949 238 917
+      </a>
+      <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener" class="footer-link">
+        <i class="ti ti-brand-instagram"></i> @kurs.pe
+      </a>
+      <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener" class="footer-link">
+        <i class="ti ti-brand-tiktok"></i> @kurs.pe
+      </a>
+    </div>
+    <p class="footer-copy">© 2026 KURS. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // ── Toggle visibilidad contraseña ──────────────────────────────────────
+    document.getElementById('togglePw').addEventListener('click', function () {
+      const input = document.getElementById('password');
+      const icon  = document.getElementById('eyeIcon');
+      input.type  = input.type === 'password' ? 'text' : 'password';
+      icon.className = input.type === 'password' ? 'ti ti-eye' : 'ti ti-eye-off';
+    });
+
+    // ── Validación dinámica de contraseña ──────────────────────────────────
+    const pwInput      = document.getElementById('password');
+    const confirmInput = document.getElementById('confirm');
+    const pwStrength   = document.getElementById('pwStrength');
+
+    const rules = {
+      'rule-len':     pw => pw.length >= 7,
+      'rule-upper':   pw => /[A-Z]/.test(pw),
+      'rule-num':     pw => /[0-9]/.test(pw),
+      'rule-special': pw => /[!@#$%^&*()\-_=+\[\]{}|;:'",.<>?/\\`~]/.test(pw),
+      'rule-match':   pw => pw.length > 0 && pw === confirmInput.value,
+    };
+
+    function updateRules() {
+      const pw = pwInput.value;
+
+      // Mostrar/ocultar el bloque
+      pwStrength.classList.toggle('visible', pw.length > 0);
+
+      // Evaluar cada regla
+      for (const [id, check] of Object.entries(rules)) {
+        document.getElementById(id).classList.toggle('ok', check(pw));
+      }
+    }
+
+    pwInput.addEventListener('input', updateRules);
+    // Actualizar "coinciden" también cuando cambia el campo de confirmación
+    confirmInput.addEventListener('input', updateRules);
+
+    // ── Validación y envío ─────────────────────────────────────────────────
+    document.getElementById('registroForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nombre   = document.getElementById('nombre').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const password = pwInput.value;
+      const confirm  = confirmInput.value;
+      const err      = document.getElementById('regError');
+
+      err.style.display = 'none';
+
+      if (!nombre) {
+        err.textContent = 'Ingresa tu nombre completo.';
+        err.style.display = 'block'; return;
+      }
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        err.textContent = 'Ingresa un correo electrónico válido.';
+        err.style.display = 'block'; return;
+      }
+      if (password.length < 7 || !/[A-Z]/.test(password) ||
+          !/[0-9]/.test(password) || !/[!@#$%^&*()\-_=+\[\]{}|;:'",.<>?]/.test(password)) {
+        err.textContent = 'La contraseña no cumple todos los requisitos de seguridad.';
+        err.style.display = 'block'; return;
+      }
+      if (password !== confirm) {
+        err.textContent = 'Las contraseñas no coinciden.';
+        err.style.display = 'block'; return;
+      }
+
+      // TODO: POST /api/auth/registro
+      window.location.href = 'PagePrincipal.html';
+    });
+  </script>
+
+</body>
+</html>

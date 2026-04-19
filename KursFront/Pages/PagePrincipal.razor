@@ -1,0 +1,204 @@
+@page "/"
+
+<PageTitle>KURS — Rumbo al futuro</PageTitle>
+
+@* ── Estrellas CSS (Blazor C#, sin JS) ── *@
+<StarField Count="260" />
+
+@* ── Orbes de fondo ── *@
+<div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+@* ══════════════ NAVBAR ══════════════ *@
+<nav class="navbar glass-bubble">
+    <div class="nav-logo">
+        <NavLink href="/">
+            <img src="images/LogoSolo.svg" alt="KURS" class="logo-img" />
+        </NavLink>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#servicios"><i class="ti ti-briefcase"></i> Servicios</a></li>
+        <li><a href="#nosotros"><i class="ti ti-users"></i> Nosotros</a></li>
+        <li><NavLink href="contacto"><i class="ti ti-message-circle"></i> Contacto</NavLink></li>
+        <li><NavLink href="proveedores"><i class="ti ti-truck-delivery"></i> Proveedores</NavLink></li>
+    </ul>
+    <div class="nav-auth">
+        <NavLink href="login" class="btn-login"><i class="ti ti-user"></i> Iniciar sesión</NavLink>
+        <NavLink href="registro" class="btn-register glass-bubble-btn"><i class="ti ti-user-plus"></i> Registrarse</NavLink>
+    </div>
+</nav>
+
+@* ══════════════ HERO ══════════════ *@
+<section class="hero">
+    <div class="hero-content">
+        <div class="badge glass-bubble">Innovación en curso</div>
+        <h1 class="hero-title">
+            Marca tu <span class="gradient-text">rumbo</span><br />
+            hacia el futuro
+        </h1>
+        <p class="hero-sub">
+            Soluciones tecnológicas que te llevan en la dirección correcta.<br />
+            Precisión, velocidad y visión en cada proyecto.
+        </p>
+        <div class="hero-actions">
+            <button class="btn-primary glass-bubble-btn">Descubrir servicios</button>
+            <button class="btn-ghost">Ver demo →</button>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="hero-logo-ring ring-outer"></div>
+        <div class="hero-logo-ring ring-mid"></div>
+        <div class="hero-logo-wrap">
+            <img src="images/LogoSinFondo.svg" alt="KURS" class="hero-logo-img" />
+        </div>
+    </div>
+</section>
+
+@* ══════════════ PROMESA 24H ══════════════ *@
+<section class="promise-section">
+    <div class="promise-card glass-bubble">
+        <div class="promise-icon"><i class="ti ti-bolt"></i></div>
+        <div class="promise-text">
+            <span class="promise-tag">Entrega garantizada</span>
+            <h2>Tu página web <span class="gradient-text">totalmente funcional</span><br />en menos de 24 horas</h2>
+            <p>Sin complicaciones, sin esperas. Tu presencia digital lista para conquistar el mercado desde el primer día.</p>
+        </div>
+        <NavLink href="contacto" class="btn-primary glass-bubble-btn promise-cta">Empezar ahora →</NavLink>
+    </div>
+</section>
+
+@* ══════════════ SERVICIOS ══════════════ *@
+<section class="servicios" id="servicios">
+    <div class="section-header">
+        <span class="section-tag glass-bubble">Nuestros servicios</span>
+        <h2>Lo que hacemos <span class="gradient-text">mejor</span></h2>
+    </div>
+    <div class="cards-grid">
+
+        <div class="service-card glass-bubble">
+            <div class="card-icon"><i class="ti ti-compass"></i></div>
+            <div class="card-number">01</div>
+            <h3>Consultoría Estratégica</h3>
+            <p>Trazamos el rumbo exacto para tu empresa. Análisis profundo, diagnóstico preciso y un plan de acción orientado a resultados medibles.</p>
+            <a href="#" class="card-link">Saber más →</a>
+            <div class="card-glow"></div>
+        </div>
+
+        <div class="service-card glass-bubble featured">
+            <div class="card-icon"><i class="ti ti-devices-2"></i></div>
+            <div class="card-number">02</div>
+            <div class="featured-badge glass-bubble">Popular</div>
+            <h3>Desarrollo Digital</h3>
+            <p>Creamos plataformas, aplicaciones y sistemas que aceleran tu negocio. Tecnología de punta con diseño que convierte usuarios en clientes.</p>
+            <a href="#" class="card-link">Saber más →</a>
+            <div class="card-glow"></div>
+        </div>
+
+        <div class="service-card glass-bubble">
+            <div class="card-icon"><i class="ti ti-robot"></i></div>
+            <div class="card-number">03</div>
+            <h3>Automatización &amp; IA</h3>
+            <p>Optimizamos procesos con inteligencia artificial y automatización avanzada. Más eficiencia, menos errores y mayor velocidad operativa.</p>
+            <a href="#" class="card-link">Saber más →</a>
+            <div class="card-glow"></div>
+        </div>
+
+    </div>
+</section>
+
+@* ══════════════ POR QUÉ KURS ══════════════ *@
+<section class="benefits-section" id="nosotros">
+    <div class="section-header">
+        <span class="section-tag glass-bubble">¿Por qué elegir KURS?</span>
+        <h2>Tu negocio merece <span class="gradient-text">estar en línea</span></h2>
+    </div>
+    <div class="benefits-grid">
+
+        <div class="benefit-card glass-bubble">
+            <i class="ti ti-world"></i>
+            <h3>Aumenta tu visibilidad</h3>
+            <p>Llega a miles de potenciales clientes que buscan tus servicios en internet todos los días.</p>
+        </div>
+
+        <div class="benefit-card glass-bubble">
+            <i class="ti ti-trending-up"></i>
+            <h3>Genera más ventas</h3>
+            <p>Un sitio optimizado convierte visitas en clientes. Tu negocio trabaja para ti las 24 horas.</p>
+        </div>
+
+        <div class="benefit-card glass-bubble">
+            <i class="ti ti-trophy"></i>
+            <h3>Compite con las grandes</h3>
+            <p>Una presencia digital profesional te pone al nivel de cualquier empresa del mercado.</p>
+        </div>
+
+        <div class="benefit-card glass-bubble">
+            <i class="ti ti-shield-check"></i>
+            <h3>Genera confianza</h3>
+            <p>El 80% de los consumidores investiga en línea antes de comprar. ¿Te están encontrando?</p>
+        </div>
+
+    </div>
+</section>
+
+@* ══════════════ STATS — Contador animado con C# Timer, sin JS ══════════════ *@
+<section class="stats">
+    <div class="stats-grid">
+        <div class="stat-item glass-bubble">
+            <span class="stat-number">@_projects</span><span class="stat-plus">+</span>
+            <p>Proyectos completados</p>
+        </div>
+        <div class="stat-item glass-bubble">
+            <span class="stat-number">@_satisfaction</span><span class="stat-plus">%</span>
+            <p>Satisfacción del cliente</p>
+        </div>
+        <div class="stat-item glass-bubble">
+            <span class="stat-number">@_years</span><span class="stat-plus">+</span>
+            <p>Años de experiencia</p>
+        </div>
+        <div class="stat-item glass-bubble">
+            <span class="stat-number">@_experts</span><span class="stat-plus">+</span>
+            <p>Expertos en el equipo</p>
+        </div>
+    </div>
+</section>
+
+@* ══════════════ CTA ══════════════ *@
+<section class="cta-section" id="contacto">
+    <div class="cta-card glass-bubble">
+        <div class="cta-orb"></div>
+        <h2>¿Listo para marcar<br /><span class="gradient-text">tu rumbo</span>?</h2>
+        <p>Únete a las empresas que ya confían en KURS para navegar hacia el éxito.</p>
+        <NavLink href="contacto" class="btn-primary glass-bubble-btn large">Contáctanos hoy</NavLink>
+    </div>
+</section>
+
+@* Banner de cookies — solo si no ha aceptado *@
+<CookieBanner />
+
+@* ══════════════ FOOTER ══════════════ *@
+<footer class="footer">
+    <div class="footer-brand">
+        <img src="images/LogoSinFondo.svg" alt="KURS" class="footer-logo-img" />
+        <p class="footer-slogan">Tecnología que marca tu rumbo.</p>
+    </div>
+    <div class="footer-contacts">
+        <a href="mailto:kurs.company.com@gmail.com" class="footer-link">
+            <i class="ti ti-mail"></i> kurs.company.com&#64;gmail.com
+        </a>
+        <a href="https://wa.me/51949238917" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-whatsapp"></i> +51 949 238 917
+        </a>
+        <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-instagram"></i> &#64;kurs.pe
+        </a>
+        <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-tiktok"></i> &#64;kurs.pe
+        </a>
+    </div>
+    <p class="footer-copy">© @DateTime.Now.Year KURS. Todos los derechos reservados.</p>
+</footer>
+

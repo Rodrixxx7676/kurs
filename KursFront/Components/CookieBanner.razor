@@ -1,0 +1,17 @@
+@if (_visible)
+{
+    <div class="cookie-banner glass-bubble @(_show ? "show" : "")">
+        <div class="cookie-icon"><i class="ti ti-cookie"></i></div>
+        <div class="cookie-text">
+            <strong>Usamos cookies</strong>
+            <p>Utilizamos cookies para mejorar tu experiencia, analizar el tráfico y personalizar el contenido.
+               Al continuar navegando, aceptas nuestra <a href="#" class="cookie-link">Política de Cookies</a>.</p>
+        </div>
+        <div class="cookie-actions">
+            <button class="cookie-btn-accept glass-bubble-btn" @onclick="Aceptar">
+                <i class="ti ti-check"></i> Aceptar
+            </button>
+            <button class="cookie-btn-reject" @onclick="Rechazar">Rechazar</button>
+        </div>
+    </div>
+}

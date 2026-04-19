@@ -1,0 +1,164 @@
+@page "/registro"
+
+<PageTitle>KURS — Crear cuenta</PageTitle>
+
+<StarField Count="260" />
+
+<div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+@* ══════════════ REGISTRO CARD ══════════════ *@
+<div class="login-wrap">
+    <div class="login-card glass-bubble">
+
+        @* Logo → vuelve al inicio *@
+        <div class="login-logo">
+            <NavLink href="/">
+                <img src="images/LogoSolo.svg" alt="KURS" />
+            </NavLink>
+        </div>
+
+        <p class="login-eyebrow">Comienza gratis hoy</p>
+        <h1 class="login-title">Crear <span class="gradient-text">cuenta</span></h1>
+        <p class="login-sub">Únete a KURS y marca tu rumbo hacia el futuro digital.</p>
+
+        <div class="login-fields">
+
+            <div class="login-group">
+                <label>Nombre completo</label>
+                <div class="login-input-wrap">
+                    <i class="ti ti-user"></i>
+                    <input type="text" placeholder="Tu nombre completo"
+                           @bind="_nombre" @bind:event="oninput" />
+                </div>
+            </div>
+
+            <div class="login-group">
+                <label>Empresa <span style="opacity:.4;font-size:8px;letter-spacing:.1em;">(opcional)</span></label>
+                <div class="login-input-wrap">
+                    <i class="ti ti-building"></i>
+                    <input type="text" placeholder="Nombre de tu empresa"
+                           @bind="_empresa" @bind:event="oninput" />
+                </div>
+            </div>
+
+            <div class="login-group">
+                <label>Correo electrónico</label>
+                <div class="login-input-wrap">
+                    <i class="ti ti-mail"></i>
+                    <input type="email" placeholder="tu@correo.com"
+                           @bind="_email" @bind:event="oninput" />
+                </div>
+            </div>
+
+            <div class="login-group">
+                <label>Contraseña</label>
+                <div class="login-input-wrap">
+                    <i class="ti ti-lock"></i>
+                    <input type="@(_mostrarPw ? "text" : "password")"
+                           placeholder="Mínimo 7 caracteres"
+                           @bind="_password" @bind:event="oninput" />
+                    <button type="button" class="toggle-pw"
+                            @onclick="() => _mostrarPw = !_mostrarPw">
+                        <i class="@(_mostrarPw ? "ti ti-eye-off" : "ti ti-eye")"></i>
+                    </button>
+                </div>
+
+                @if (!string.IsNullOrEmpty(_password))
+                {
+                    <div class="pw-rules">
+                        <span class="pw-rule @(_password.Length >= 7 ? "ok" : "fail")">
+                            <i class="ti @(_password.Length >= 7 ? "ti-circle-check" : "ti-circle-x")"></i>
+                            Mínimo 7 caracteres
+                        </span>
+                        <span class="pw-rule @(PwTieneMayuscula ? "ok" : "fail")">
+                            <i class="ti @(PwTieneMayuscula ? "ti-circle-check" : "ti-circle-x")"></i>
+                            Una letra mayúscula
+                        </span>
+                        <span class="pw-rule @(PwTieneNumero ? "ok" : "fail")">
+                            <i class="ti @(PwTieneNumero ? "ti-circle-check" : "ti-circle-x")"></i>
+                            Un número
+                        </span>
+                        <span class="pw-rule @(PwTieneEspecial ? "ok" : "fail")">
+                            <i class="ti @(PwTieneEspecial ? "ti-circle-check" : "ti-circle-x")"></i>
+                            Un carácter especial (!&#64;#$%...)
+                        </span>
+                    </div>
+                }
+            </div>
+
+            <div class="login-group">
+                <label>Confirmar contraseña</label>
+                <div class="login-input-wrap">
+                    <i class="ti ti-lock-check"></i>
+                    <input type="password" placeholder="Repite tu contraseña"
+                           @bind="_confirm" @bind:event="oninput" />
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(_error))
+            {
+                <p class="login-error">@_error</p>
+            }
+
+            @if (_registrado)
+            {
+                <div class="registro-ok glass-bubble">
+                    <i class="ti ti-circle-check"></i>
+                    <span>¡Cuenta creada! Redirigiendo...</span>
+                </div>
+            }
+            else
+            {
+                <button class="btn-login-submit glass-bubble-btn"
+                        @onclick="Registrar" disabled="@_enviando">
+                    @if (_enviando)
+                    {
+                        <i class="ti ti-loader-2 spin"></i>
+                        <span>Creando cuenta...</span>
+                    }
+                    else
+                    {
+                        <i class="ti ti-user-plus"></i>
+                        <span>Crear cuenta</span>
+                    }
+                </button>
+            }
+
+        </div>
+
+        <div class="login-divider"><span>¿ya tienes cuenta?</span></div>
+
+        <p class="login-register">
+            ¿Ya tienes cuenta?
+            <NavLink href="login">Iniciar sesión</NavLink>
+        </p>
+
+    </div>
+</div>
+
+@* ══════════════ FOOTER ══════════════ *@
+<footer class="footer">
+    <div class="footer-brand">
+        <img src="images/LogoSinFondo.svg" alt="KURS" class="footer-logo-img" />
+        <p class="footer-slogan">Tecnología que marca tu rumbo.</p>
+    </div>
+    <div class="footer-contacts">
+        <a href="mailto:kurs.company.com@gmail.com" class="footer-link">
+            <i class="ti ti-mail"></i> kurs.company.com&#64;gmail.com
+        </a>
+        <a href="https://wa.me/51949238917" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-whatsapp"></i> +51 949 238 917
+        </a>
+        <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-instagram"></i> &#64;kurs.pe
+        </a>
+        <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener" class="footer-link">
+            <i class="ti ti-brand-tiktok"></i> &#64;kurs.pe
+        </a>
+    </div>
+    <p class="footer-copy">© @DateTime.Now.Year KURS. Todos los derechos reservados.</p>
+</footer>

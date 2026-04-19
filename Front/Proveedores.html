@@ -46,7 +46,22 @@
       <a href="Login.html" class="btn-login"><i class="ti ti-user"></i> Iniciar sesión</a>
       <a href="Registro.html" class="btn-register glass-bubble-btn"><i class="ti ti-user-plus"></i> Registrarse</a>
     </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="nav-mobile" id="navMobile">
+    <ul>
+      <li><a href="PagePrincipal.html#servicios"><i class="ti ti-briefcase"></i> Servicios</a></li>
+      <li><a href="PagePrincipal.html#nosotros"><i class="ti ti-users"></i> Nosotros</a></li>
+      <li><a href="Contacto.html"><i class="ti ti-message-circle"></i> Contacto</a></li>
+      <li><a href="Proveedores.html" class="active"><i class="ti ti-truck-delivery"></i> Proveedores</a></li>
+    </ul>
+    <div class="nav-mobile-auth" id="navMobileAuth">
+      <a href="Login.html" class="btn-login"><i class="ti ti-user"></i> Iniciar sesión</a>
+      <a href="Registro.html" class="btn-register glass-bubble-btn"><i class="ti ti-user-plus"></i> Registrarse</a>
+    </div>
+  </div>
   <script>
     (function(){
       const u = JSON.parse(localStorage.getItem('kurs_user')||'null');
@@ -269,6 +284,30 @@
   </footer>
 
   <script>
+    // ── Hamburger ──────────────────────────────────────────────────
+    (function(){
+      const btn    = document.getElementById('navHamburger');
+      const mobile = document.getElementById('navMobile');
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('open');
+        mobile.classList.toggle('open');
+      });
+      mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        btn.classList.remove('open'); mobile.classList.remove('open');
+      }));
+      const u = JSON.parse(localStorage.getItem('kurs_user')||'null');
+      const t = localStorage.getItem('kurs_token');
+      if(t && u){
+        const ini = (u.Nombre||'').split(' ').slice(0,2).map(p=>p[0]).join('').toUpperCase();
+        const nom = (u.Nombre||'').split(' ')[0];
+        document.getElementById('navMobileAuth').innerHTML =
+          `<div class="nav-user-pill" style="justify-content:center;">
+            <span class="nav-pill-avatar">${ini}</span>
+            <a href="Cuenta.html" class="nav-pill-name">${nom}</a>
+            <button class="nav-pill-logout" onclick="['kurs_token','kurs_user','kurs_expira','kurs_actividad'].forEach(k=>localStorage.removeItem(k));location.reload();" title="Cerrar sesión"><i class="ti ti-logout"></i></button>
+          </div>`;
+      }
+    })();
 
     // ── FORMULARIO PROVEEDOR ─────────────────────────────────────
     document.getElementById('btnEnviar').addEventListener('click', function () {

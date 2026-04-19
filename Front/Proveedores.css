@@ -221,6 +221,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
+  .prov-hero          { padding: 110px 24px 48px; }
   .prov-benefits-grid { grid-template-columns: repeat(2,1fr); }
   .prov-req-grid      { grid-template-columns: 1fr; }
   .prov-form-row      { grid-template-columns: 1fr; }
@@ -231,6 +232,7 @@
   .cookie-banner      { flex-direction: column; text-align: center; padding: 24px 20px; }
   .cookie-actions     { flex-direction: row; justify-content: center; }
 }
-@media (max-width: 500px) {
+@media (max-width: 480px) {
   .prov-benefits-grid { grid-template-columns: 1fr; }
+  .prov-hero h1       { font-size: clamp(28px, 8vw, 44px); }
 }

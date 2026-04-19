@@ -620,14 +620,26 @@
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .cuenta-main { grid-template-columns: 1fr; padding: 100px 20px 60px; }
-  .cuenta-sidebar { position: static; flex-direction: row; flex-wrap: wrap; justify-content: center; }
-  .cuenta-nav { flex-direction: row; flex-wrap: wrap; }
-  .cuenta-nav-btn { flex: 1; min-width: 120px; justify-content: center; }
-  .cuenta-cards-grid { grid-template-columns: 1fr; }
-  .perfil-form-row { grid-template-columns: 1fr; }
-  .niveles-cards { grid-template-columns: 1fr; }
-  .mercado-grid { grid-template-columns: 1fr; }
-  .mercado-resumen { flex-wrap: wrap; }
+  .cuenta-main        { grid-template-columns: 1fr; padding: 100px 20px 60px; }
+  .cuenta-sidebar     { position: static; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .cuenta-nav         { flex-direction: row; flex-wrap: wrap; }
+  .cuenta-nav-btn     { flex: 1; min-width: 120px; justify-content: center; }
+  .cuenta-cards-grid  { grid-template-columns: 1fr; }
+  .perfil-form-row    { grid-template-columns: 1fr; }
+  .niveles-cards      { grid-template-columns: 1fr; }
+  .mercado-grid       { grid-template-columns: 1fr; }
+  .mercado-resumen    { flex-wrap: wrap; }
   .mercado-resumen-item { min-width: 120px; }
+}
+@media (max-width: 480px) {
+  .cuenta-main        { padding: 90px 14px 48px; gap: 16px; }
+  .cuenta-sidebar     { padding: 24px 16px; }
+  .cuenta-avatar      { width: 70px; height: 70px; font-size: 22px; }
+  .cuenta-nav-btn     { min-width: 80px; font-size: 9px; padding: 9px 10px; }
+  .cuenta-nav-btn i   { display: none; }
+  .tabla-wrap         { overflow-x: auto; }
+  .kurs-table         { min-width: 520px; }
+  .niveles-cards      { grid-template-columns: 1fr; }
+  .mercado-resumen    { gap: 4px; }
+  .mercado-resumen-item { min-width: 80px; padding: 8px 0; }
 }

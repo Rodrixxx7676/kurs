@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>html,body{background:#0a0a0a;}.glass-bubble{background:rgba(20,20,28,0.7)}</style>
+  <meta name="description" content="Contáctanos por WhatsApp, Instagram o correo. El equipo KURS responde en menos de 24 horas." />
   <title>KURS — Contacto</title>
   <link rel="icon" type="image/svg+xml" href="../Images/LogoSinFondo.svg" />
   <meta name="apple-mobile-web-app-title" content="KURS" />
@@ -47,7 +48,7 @@
       <a href="Login.html" class="btn-login"><i class="ti ti-user"></i> Iniciar sesión</a>
       <a href="Registro.html" class="btn-register glass-bubble-btn"><i class="ti ti-user-plus"></i> Registrarse</a>
     </div>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobile">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -65,7 +66,8 @@
   </div>
   <script>
     (function(){
-      const u = JSON.parse(localStorage.getItem('kurs_user')||'null');
+      let u = null;
+      try { u = JSON.parse(localStorage.getItem('kurs_user') || 'null'); } catch {}
       const t = localStorage.getItem('kurs_token');
       if(t && u){
         const ini = (u.Nombre||'').split(' ').slice(0,2).map(p=>p[0]).join('').toUpperCase();
@@ -92,7 +94,7 @@
   <!-- ══════════════ CANALES ══════════════ -->
   <div class="contact-channels">
 
-    <a href="https://wa.me/51949238917" target="_blank" rel="noopener"
+    <a href="https://wa.me/51949238917" target="_blank" rel="noopener noreferrer"
        class="channel-card glass-bubble whatsapp">
       <div class="channel-icon"><i class="ti ti-brand-whatsapp"></i></div>
       <h3>WhatsApp</h3>
@@ -101,7 +103,7 @@
       <span class="channel-btn">Chatear ahora</span>
     </a>
 
-    <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener"
+    <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener noreferrer"
        class="channel-card glass-bubble instagram">
       <div class="channel-icon"><i class="ti ti-brand-instagram"></i></div>
       <h3>Instagram</h3>
@@ -119,7 +121,7 @@
       <span class="channel-btn">Enviar correo</span>
     </a>
 
-    <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener"
+    <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener noreferrer"
        class="channel-card glass-bubble tiktok">
       <div class="channel-icon"><i class="ti ti-brand-tiktok"></i></div>
       <h3>TikTok</h3>
@@ -189,13 +191,13 @@
         <a href="mailto:kurs.company.com@gmail.com" class="footer-link">
           <i class="ti ti-mail"></i> kurs.company.com@gmail.com
         </a>
-        <a href="https://wa.me/51949238917" target="_blank" rel="noopener" class="footer-link">
+        <a href="https://wa.me/51949238917" target="_blank" rel="noopener noreferrer" class="footer-link">
           <i class="ti ti-brand-whatsapp"></i> +51 949 238 917
         </a>
-        <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener" class="footer-link">
+        <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener noreferrer" class="footer-link">
           <i class="ti ti-brand-instagram"></i> @kurs.pe
         </a>
-        <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener" class="footer-link">
+        <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener noreferrer" class="footer-link">
           <i class="ti ti-brand-tiktok"></i> @kurs.pe
         </a>
       </div>
@@ -209,13 +211,17 @@
       const btn    = document.getElementById('navHamburger');
       const mobile = document.getElementById('navMobile');
       btn.addEventListener('click', () => {
+        const isOpen = mobile.classList.toggle('open');
         btn.classList.toggle('open');
-        mobile.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen);
       });
       mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        btn.classList.remove('open'); mobile.classList.remove('open');
+        btn.classList.remove('open');
+        mobile.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
       }));
-      const u = JSON.parse(localStorage.getItem('kurs_user')||'null');
+      let u = null;
+      try { u = JSON.parse(localStorage.getItem('kurs_user') || 'null'); } catch {}
       const t = localStorage.getItem('kurs_token');
       if(t && u){
         const ini = (u.Nombre||'').split(' ').slice(0,2).map(p=>p[0]).join('').toUpperCase();

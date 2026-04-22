@@ -1,16 +1,31 @@
-# .NET
-bin/
-obj/
+# ── Build outputs ──────────────────────────────
+**/bin/
+**/obj/
+
+# ── Configuración local (secretos) ─────────────
+**/appsettings.Development.json
+**/appsettings.Local.json
+
+# ── Visual Studio / Rider ──────────────────────
+.vs/
+.idea/
 *.user
 *.suo
-.vs/
+*.userosscache
+*.sln.docstates
 
-# Node
-node_modules/
-dist/
-.env
-.env.local
-
-# OS
+# ── Sistema operativo ──────────────────────────
 .DS_Store
 Thumbs.db
+
+# ── NuGet ──────────────────────────────────────
+*.nupkg
+.nuget/
+
+# ── Logs ───────────────────────────────────────
+*.log
+logs/
+
+# ── Blazor WASM publish ────────────────────────
+**/wwwroot/lib/
+publish/

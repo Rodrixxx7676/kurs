@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>html,body{background:#0a0a0a;}.glass-bubble{background:rgba(20,20,28,0.7)}</style>
+  <meta name="description" content="Accede a tu cuenta KURS. Portal de inicio de sesión para clientes y colaboradores." />
   <title>KURS — Iniciar sesión</title>
   <link rel="icon" type="image/svg+xml" href="../Images/LogoSinFondo.svg" />
   <meta name="apple-mobile-web-app-title" content="KURS" />
@@ -107,7 +108,7 @@
 
       err.style.display = 'none';
 
-      if (!email || !email.includes('@') || !email.includes('.')) {
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         err.textContent = 'Ingresa un correo electrónico válido.';
         err.style.display = 'block'; return;
       }
@@ -165,13 +166,13 @@
       <a href="mailto:kurs.company.com@gmail.com" class="footer-link">
         <i class="ti ti-mail"></i> kurs.company.com@gmail.com
       </a>
-      <a href="https://wa.me/51949238917" target="_blank" rel="noopener" class="footer-link">
+      <a href="https://wa.me/51949238917" target="_blank" rel="noopener noreferrer" class="footer-link">
         <i class="ti ti-brand-whatsapp"></i> +51 949 238 917
       </a>
-      <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener" class="footer-link">
+      <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener noreferrer" class="footer-link">
         <i class="ti ti-brand-instagram"></i> @kurs.pe
       </a>
-      <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener" class="footer-link">
+      <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener noreferrer" class="footer-link">
         <i class="ti ti-brand-tiktok"></i> @kurs.pe
       </a>
     </div>

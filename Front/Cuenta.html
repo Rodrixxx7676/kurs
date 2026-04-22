@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>html,body{background:#0a0a0a;}.glass-bubble{background:rgba(20,20,28,0.7)}</style>
+  <meta name="description" content="Panel de usuario KURS. Gestiona tu perfil, mensajes y configuración de cuenta." />
   <title>KURS — Mi Cuenta</title>
   <link rel="icon" type="image/svg+xml" href="../Images/LogoSinFondo.svg" />
+  <meta name="apple-mobile-web-app-title" content="KURS" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -559,13 +561,13 @@
         <a href="mailto:kurs.company.com@gmail.com" class="footer-link">
           <i class="ti ti-mail"></i> kurs.company.com@gmail.com
         </a>
-        <a href="https://wa.me/51949238917" target="_blank" rel="noopener" class="footer-link">
+        <a href="https://wa.me/51949238917" target="_blank" rel="noopener noreferrer" class="footer-link">
           <i class="ti ti-brand-whatsapp"></i> +51 949 238 917
         </a>
-        <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener" class="footer-link">
+        <a href="https://instagram.com/kurs.pe" target="_blank" rel="noopener noreferrer" class="footer-link">
           <i class="ti ti-brand-instagram"></i> @kurs.pe
         </a>
-        <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener" class="footer-link">
+        <a href="https://tiktok.com/@kurs.pe" target="_blank" rel="noopener noreferrer" class="footer-link">
           <i class="ti ti-brand-tiktok"></i> @kurs.pe
         </a>
       </div>
@@ -578,7 +580,8 @@
 
     // ── Auth guard ──────────────────────────────────────────────────────────
     const token = localStorage.getItem('kurs_token');
-    const user  = JSON.parse(localStorage.getItem('kurs_user') || 'null');
+    let user = null;
+    try { user = JSON.parse(localStorage.getItem('kurs_user') || 'null'); } catch {}
     if (!token || !user) { window.location.href = 'Login.html'; }
 
     // ── Poblar datos del usuario ────────────────────────────────────────────

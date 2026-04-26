@@ -453,7 +453,7 @@
                 <span class="sector-stat-l">Crecimiento anual</span>
               </div>
             </div>
-            <p class="sector-insight">Boom post-pandemia consolidado. Fuerte demanda de apps de seguimiento, membresías digitales y coaching.</p>
+            <p class="sector-insight">Boom post-pandemia consolidado. Fuerte demanda de apps de seguimiento, planes de acceso digital y coaching.</p>
           </div>
 
           <!-- Educación -->
@@ -715,6 +715,315 @@
         }
       } catch { /* sin conexión, muestra — */ }
     })();
+  </script>
+
+  <!-- ── Modal universal de mercado ───────────────────────────────────── -->
+  <div class="fsModal-overlay" id="sectModal" role="dialog" aria-modal="true">
+    <div class="fsModal-box">
+
+      <button class="fsModal-close" id="sectModalClose" aria-label="Cerrar">
+        <i class="ti ti-x"></i>
+      </button>
+      <div class="fsModal-header">
+        <div class="fsModal-icon" id="sectIcon"></div>
+        <div>
+          <h2 class="fsModal-title" id="sectTitle"></h2>
+          <p class="fsModal-subtitle">¿Qué le puedes ofrecer a este mercado?</p>
+        </div>
+        <span class="fsModal-badge" id="sectBadge"></span>
+      </div>
+      <p class="fsModal-section-label">SERVICIOS DIGITALES PARA OFRECER</p>
+      <div class="fsModal-services" id="sectServices"></div>
+      <p class="fsModal-section-label">NIVELES DE INVERSIÓN</p>
+      <div class="fsModal-plans" id="sectPlans"></div>
+    </div>
+  </div>
+
+  <style>
+  /* ── Modal universal de mercado ────────────────────────────────────── */
+  .fsModal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.72);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .fsModal-overlay.open { display: flex; animation: fsIn 0.22s ease; }
+  @keyframes fsIn { from { opacity:0 } to { opacity:1 } }
+
+  .fsModal-box {
+    position: relative; background: rgba(14,14,22,0.97);
+    border: 1px solid rgba(255,255,255,0.10); border-radius: 24px;
+    padding: 36px 32px 32px; max-width: 860px; width: 100%;
+    max-height: 88vh; overflow-y: auto;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+    animation: fsBoxIn 0.28s cubic-bezier(.22,.8,.36,1) both;
+  }
+  @keyframes fsBoxIn { from { opacity:0; transform:scale(.94) translateY(16px) } to { opacity:1; transform:none } }
+
+  .fsModal-close {
+    position: absolute; top: 18px; right: 18px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%; width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.6); font-size: 16px; cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+  }
+  .fsModal-close:hover { background: rgba(255,255,255,0.14); color: #fff; }
+
+  .fsModal-header {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 28px; flex-wrap: wrap;
+  }
+  .fsModal-icon {
+    width: 52px; height: 52px; border-radius: 16px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 24px;
+  }
+  .fsModal-title {
+    font-family: var(--font-display); font-size: 22px; font-weight: 800;
+    color: #fff; margin: 0 0 4px; letter-spacing: 0.04em;
+  }
+  .fsModal-subtitle { font-size: 13px; color: rgba(255,255,255,0.45); margin: 0; }
+  .fsModal-badge {
+    margin-left: auto; display: flex; align-items: center; gap: 5px;
+    padding: 5px 14px; border-radius: 999px; font-size: 11px; font-weight: 600;
+    background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.30);
+    color: #4ade80; white-space: nowrap;
+  }
+  .fsModal-section-label {
+    font-family: var(--font-display); font-size: 9px; letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.30); text-transform: uppercase; margin: 0 0 12px;
+  }
+  .fsModal-services { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .fsModal-service {
+    display: flex; align-items: center; gap: 7px;
+    padding: 7px 14px; border-radius: 999px; font-size: 12px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.75); transition: background 0.18s, border-color 0.18s;
+  }
+  .fsModal-service i { font-size: 14px; }
+  .fsModal-plans { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .fsModal-plan {
+    border-radius: 18px; padding: 24px 20px;
+    display: flex; flex-direction: column; gap: 6px;
+    transition: transform 0.2s;
+  }
+  .fsModal-plan:hover { transform: translateY(-4px); }
+  .plan-c { background: rgba(74,127,212,0.08); border: 1px solid rgba(74,127,212,0.25); }
+  .plan-b { background: rgba(155,89,212,0.10); border: 1px solid rgba(155,89,212,0.35); box-shadow: 0 0 28px rgba(155,89,212,0.12); }
+  .plan-a { background: rgba(255,180,0,0.08); border: 1px solid rgba(255,180,0,0.30); }
+  .fsModal-plan-tag {
+    font-family: var(--font-display); font-size: 32px; font-weight: 900; line-height: 1; margin-bottom: 2px;
+  }
+  .plan-c .fsModal-plan-tag { color: #4a7fd4; }
+  .plan-b .fsModal-plan-tag { color: #9b59d4; }
+  .plan-a .fsModal-plan-tag { color: #ffb400; }
+  .fsModal-plan-label {
+    font-family: var(--font-display); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; opacity: 0.6;
+  }
+  .fsModal-plan-price { font-family: var(--font-display); font-size: 20px; font-weight: 800; color: #fff; }
+  .fsModal-plan-recur { font-size: 11px; color: rgba(255,255,255,0.40); margin-bottom: 14px; }
+  .fsModal-plan-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+  .fsModal-plan-list li { display: flex; align-items: flex-start; gap: 7px; font-size: 12px; color: rgba(255,255,255,0.72); line-height: 1.4; }
+  .fsModal-plan-list i { font-size: 13px; margin-top: 1px; flex-shrink: 0; }
+  .plan-c .fsModal-plan-list i { color: #4a7fd4; }
+  .plan-b .fsModal-plan-list i { color: #9b59d4; }
+  .plan-a .fsModal-plan-list i { color: #ffb400; }
+  .fsModal-plan-best {
+    margin-top: 14px; font-size: 10px; color: rgba(255,255,255,0.35);
+    font-style: italic; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 10px; line-height: 1.4;
+  }
+  .sector-card { cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+  .sector-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(100,100,200,0.18); }
+  @media (max-width: 640px) {
+    .fsModal-plans { grid-template-columns: 1fr; }
+    .fsModal-box { padding: 24px 18px; }
+    .fsModal-badge { display: none; }
+  }
+  </style>
+
+  <script>
+  // ── Modal universal de mercado ───────────────────────────────────────
+  (function () {
+    const SECTORES = {
+      'sector-gastronomia': {
+        titulo: 'Gastronomía', icono: 'ti-tools-kitchen-2', color: '#f97316', crecimiento: '+12.4%',
+        servicios: [
+          ['ti-motorbike','App de delivery propio'],['ti-qrcode','Menú digital con QR'],
+          ['ti-calendar-event','Sistema de reservas de mesa'],['ti-stars','Programa de fidelización digital'],
+          ['ti-chart-bar','Panel de analytics de ventas'],['ti-package','Control de inventario en tiempo real'],
+          ['ti-brand-instagram','Gestión de redes sociales'],['ti-robot','Chatbot de atención al cliente'],
+        ],
+        planes: {
+          c: { precio:'$300 – $700', mensual:'+ $50–$100 / mes', items:['Página web del restaurante','Menú digital con QR','Formulario de reservas','Diseño responsive mobile'], nota:'Presencia digital básica y profesional' },
+          b: { precio:'$1,200 – $3,000', mensual:'+ $200–$350 / mes', items:['Todo del plan C','Sistema de pedidos online','Control de inventario','Planes de acceso digital para clientes','Integración con redes sociales'], nota:'El más solicitado — ROI en 2–3 meses' },
+          a: { precio:'$4,500 – $10,000', mensual:'+ $600–$1,000 / mes', items:['Todo del plan B','App propia de delivery','Fidelización con IA','Analytics avanzados de ventas','Chatbot inteligente 24/7'], nota:'Ecosistema digital completo' },
+        }
+      },
+      'sector-tecnologia': {
+        titulo: 'Tecnología', icono: 'ti-cpu', color: '#06b6d4', crecimiento: '+28.7%',
+        servicios: [
+          ['ti-layout-dashboard','Landing page para SaaS'],['ti-users','Portal de onboarding digital'],
+          ['ti-file-description','Documentación técnica online'],['ti-credit-card','Pagos y suscripciones recurrentes'],
+          ['ti-brain','Automatización con IA'],['ti-address-book','CRM de gestión de clientes'],
+          ['ti-chart-dots','Dashboard de métricas SaaS'],['ti-api','Marketplace de servicios tech'],
+        ],
+        planes: {
+          c: { precio:'$400 – $800', mensual:'+ $60–$100 / mes', items:['Landing page profesional','Demo + formulario de contacto','Documentación básica','Integración con analytics'], nota:'Ideal para validar tu MVP' },
+          b: { precio:'$1,500 – $3,500', mensual:'+ $250–$450 / mes', items:['Todo del plan C','CRM básico de clientes','Onboarding digital','Planes de acceso digital (tiers)','Pagos recurrentes integrados'], nota:'Escala tu startup con estructura' },
+          a: { precio:'$5,000 – $12,000', mensual:'+ $700–$1,200 / mes', items:['Todo del plan B','Plataforma SaaS completa','Automatización con IA','Analytics avanzados + reportes','Marketplace de integraciones'], nota:'Producto tech de nivel enterprise' },
+        }
+      },
+      'sector-finanzas': {
+        titulo: 'Financiero', icono: 'ti-chart-bar', color: '#10b981', crecimiento: '+8.1%',
+        servicios: [
+          ['ti-calculator','Calculadoras de crédito e inversión'],['ti-shield-lock','Portal de clientes seguro'],
+          ['ti-file-analytics','Automatización de reportes'],['ti-coins','Comparador de productos financieros'],
+          ['ti-clipboard-check','Gestión digital de documentos'],['ti-device-mobile','App de banca digital'],
+          ['ti-alert-circle','Módulo de alertas regulatorias'],['ti-robot','Asesor financiero con IA'],
+        ],
+        planes: {
+          c: { precio:'$500 – $900', mensual:'+ $70–$120 / mes', items:['Landing page institucional','Calculadoras financieras','Formulario seguro de contacto','Política de privacidad incluida'], nota:'Credibilidad digital desde el día uno' },
+          b: { precio:'$2,000 – $4,500', mensual:'+ $300–$500 / mes', items:['Todo del plan C','Portal privado de clientes','Gestión de documentos cifrada','Planes de acceso digital por nivel','Reportes automáticos'], nota:'Operación financiera digitalizada' },
+          a: { precio:'$6,000 – $15,000', mensual:'+ $800–$1,500 / mes', items:['Todo del plan B','Dashboard financiero personalizado','App de banca/inversión digital','Asesor IA integrado','Compliance y auditoría automática'], nota:'Solución fintech de alto impacto' },
+        }
+      },
+      'sector-fitness': {
+        titulo: 'Fitness & Salud', icono: 'ti-activity', color: '#ea4c89', crecimiento: '+18.3%',
+        servicios: [
+          ['ti-run','Rutinas virtuales personalizadas'],['ti-heart-rate-monitor','Control digital de salud'],
+          ['ti-music','Conexión con música del gimnasio'],['ti-robot','Tutor virtual con IA'],
+          ['ti-salad','Seguimiento nutricional'],['ti-calendar-event','Reservas de clases online'],
+          ['ti-id-badge','Planes de acceso digital'],['ti-device-watch','Integración con wearables'],
+        ],
+        planes: {
+          c: { precio:'$300 – $600', mensual:'+ $40–$80 / mes', items:['Landing page del gimnasio','Catálogo de clases y servicios','Formulario de contacto','Diseño responsive mobile'], nota:'Ideal para empezar a tener presencia digital' },
+          b: { precio:'$1,000 – $2,500', mensual:'+ $150–$300 / mes', items:['Todo del plan C','Reservas de clases online','Perfil de miembro + asistencia','Rutinas virtuales básicas','Planes de acceso digital'], nota:'El más solicitado — ROI rápido' },
+          a: { precio:'$4,000 – $9,000', mensual:'+ $500–$900 / mes', items:['Todo del plan B','Tutor virtual con IA','Control digital de salud','Conexión música del gimnasio','Seguimiento nutricional IA','Integración wearables'], nota:'Máximo diferenciador en el mercado' },
+        }
+      },
+      'sector-educacion': {
+        titulo: 'Educación', icono: 'ti-school', color: '#6366f1', crecimiento: '+5.2%',
+        servicios: [
+          ['ti-book','Plataforma de cursos online (LMS)'],['ti-file-plus','Sistema de matrículas digitales'],
+          ['ti-video','Aulas virtuales interactivas'],['ti-certificate','Certificados automáticos'],
+          ['ti-chart-line','Panel de progreso del estudiante'],['ti-robot','Tutor virtual con IA'],
+          ['ti-library','Biblioteca digital'],['ti-cash','Pagos y cuotas online'],
+        ],
+        planes: {
+          c: { precio:'$300 – $700', mensual:'+ $50–$90 / mes', items:['Landing institucional','Catálogo de cursos','Formulario de matrícula','Diseño responsive mobile'], nota:'Primera presencia digital educativa' },
+          b: { precio:'$1,200 – $3,000', mensual:'+ $180–$320 / mes', items:['Todo del plan C','LMS básico con aulas virtuales','Evaluaciones automáticas','Planes de acceso digital por curso','Pagos online'], nota:'Plataforma educativa funcional' },
+          a: { precio:'$4,000 – $9,000', mensual:'+ $500–$900 / mes', items:['Todo del plan B','Tutor virtual con IA','Certificados verificables','Analytics de aprendizaje','Gamificación + logros'], nota:'Experiencia educativa de élite' },
+        }
+      },
+      'sector-retail': {
+        titulo: 'Retail & Comercio', icono: 'ti-shopping-bag', color: '#f59e0b', crecimiento: '+3.8%',
+        servicios: [
+          ['ti-world','Tienda online (e-commerce)'],['ti-qrcode','Catálogo digital con QR'],
+          ['ti-package','Gestión de inventario en tiempo real'],['ti-gift','Programa de puntos y recompensas'],
+          ['ti-brand-shopee','Integración con marketplaces'],['ti-device-mobile','App de compras propia'],
+          ['ti-message-chatbot','Chatbot de atención al cliente'],['ti-chart-pie','Dashboard de ventas'],
+        ],
+        planes: {
+          c: { precio:'$400 – $800', mensual:'+ $50–$100 / mes', items:['Tienda online básica','Catálogo de productos','Carrito de compras','Pasarela de pagos'], nota:'Comienza a vender online hoy' },
+          b: { precio:'$1,500 – $3,500', mensual:'+ $200–$400 / mes', items:['Todo del plan C','Gestión de inventario','Planes de acceso digital para clientes','Programa de puntos y recompensas','Chatbot básico'], nota:'E-commerce con retención de clientes' },
+          a: { precio:'$5,000 – $11,000', mensual:'+ $600–$1,100 / mes', items:['Todo del plan B','App propia de compras','Integración con marketplaces','IA de recomendaciones de productos','Analytics avanzado de ventas'], nota:'Ecosistema retail omnicanal' },
+        }
+      },
+      'sector-turismo': {
+        titulo: 'Turismo', icono: 'ti-plane', color: '#0ea5e9', crecimiento: '+21.5%',
+        servicios: [
+          ['ti-calendar-check','Motor de reservas online'],['ti-map-2','Catálogo de paquetes y tours'],
+          ['ti-phone','App de guía virtual para turistas'],['ti-globe','Integración con plataformas de viaje'],
+          ['ti-users-group','Gestión de grupos y capacidades'],['ti-message','Chat en tiempo real con guías'],
+          ['ti-photo','Galería inmersiva de destinos'],['ti-chart-bar','Dashboard de ocupación y ventas'],
+        ],
+        planes: {
+          c: { precio:'$400 – $800', mensual:'+ $60–$110 / mes', items:['Landing de agencia o hotel','Catálogo de tours y paquetes','Formulario de reservas','Galería de destinos'], nota:'Visibilidad digital para atraer viajeros' },
+          b: { precio:'$1,500 – $3,500', mensual:'+ $220–$380 / mes', items:['Todo del plan C','Motor de reservas con pagos','Gestión de grupos y cupos','Planes de acceso digital (pases VIP)','Integración con WhatsApp'], nota:'Operación turística automatizada' },
+          a: { precio:'$5,000 – $12,000', mensual:'+ $700–$1,200 / mes', items:['Todo del plan B','App de guía virtual','Integración con OTAs (Booking, Airbnb)','Chat en tiempo real con guías','Analytics de ocupación con IA'], nota:'Experiencia turística digital premium' },
+        }
+      },
+      'sector-construccion': {
+        titulo: 'Construcción', icono: 'ti-building-skyscraper', color: '#a78bfa', crecimiento: '+9.6%',
+        servicios: [
+          ['ti-home-2','Portal de proyectos inmobiliarios'],['ti-progress','Seguimiento digital de obras'],
+          ['ti-cube-3d','Visualizador 3D de propiedades'],['ti-file-text','Gestión digital de contratos'],
+          ['ti-hard-hat','App de campo para trabajadores'],['ti-box','Control de materiales e inventario'],
+          ['ti-user-check','Portal privado para compradores'],['ti-chart-dots-2','Dashboard de avance de obra'],
+        ],
+        planes: {
+          c: { precio:'$500 – $900', mensual:'+ $70–$120 / mes', items:['Landing del proyecto o empresa','Catálogo de propiedades','Formulario de cotización','Galería de proyectos'], nota:'Genera leads de compradores online' },
+          b: { precio:'$2,000 – $4,000', mensual:'+ $280–$450 / mes', items:['Todo del plan C','Portal privado para compradores','Seguimiento de avance de obra','Gestión de contratos digitales','Planes de acceso digital por etapa'], nota:'Gestión de proyectos profesionalizada' },
+          a: { precio:'$6,000 – $14,000', mensual:'+ $800–$1,400 / mes', items:['Todo del plan B','Visualizador 3D interactivo','App de campo para cuadrillas','Control de inventario y materiales','Dashboard ejecutivo con IA'], nota:'Constructora totalmente digitalizada' },
+        }
+      },
+    };
+
+    const overlay  = document.getElementById('sectModal');
+    const closeBtn = document.getElementById('sectModalClose');
+
+    function hexToRgb(hex) {
+      const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+      return `${r},${g},${b}`;
+    }
+
+    function abrirModal(sector) {
+      const d = SECTORES[sector];
+      if (!d) return;
+      const rgb = hexToRgb(d.color);
+
+      document.getElementById('sectIcon').innerHTML = `<i class="ti ${d.icono}"></i>`;
+      document.getElementById('sectIcon').style.cssText =
+        `background:linear-gradient(135deg,rgba(${rgb},0.22),rgba(${rgb},0.10));border:1px solid rgba(${rgb},0.35);color:${d.color}`;
+      document.getElementById('sectTitle').textContent = d.titulo;
+      document.getElementById('sectBadge').innerHTML = `<i class="ti ti-trending-up"></i> ${d.crecimiento} crecimiento`;
+
+      document.getElementById('sectServices').innerHTML = d.servicios
+        .map(([ic, txt]) => `<div class="fsModal-service"><i class="ti ${ic}" style="color:${d.color}"></i> ${txt}</div>`)
+        .join('');
+
+      const p = d.planes;
+      document.getElementById('sectPlans').innerHTML = `
+        <div class="fsModal-plan plan-c">
+          <div class="fsModal-plan-tag">C</div>
+          <div class="fsModal-plan-label">Poco Caro</div>
+          <div class="fsModal-plan-price">${p.c.precio}</div>
+          <div class="fsModal-plan-recur">${p.c.mensual}</div>
+          <ul class="fsModal-plan-list">${p.c.items.map(i=>`<li><i class="ti ti-check"></i>${i}</li>`).join('')}</ul>
+          <p class="fsModal-plan-best">${p.c.nota}</p>
+        </div>
+        <div class="fsModal-plan plan-b">
+          <div class="fsModal-plan-tag">B</div>
+          <div class="fsModal-plan-label">Medio</div>
+          <div class="fsModal-plan-price">${p.b.precio}</div>
+          <div class="fsModal-plan-recur">${p.b.mensual}</div>
+          <ul class="fsModal-plan-list">${p.b.items.map(i=>`<li><i class="ti ti-check"></i>${i}</li>`).join('')}</ul>
+          <p class="fsModal-plan-best">${p.b.nota}</p>
+        </div>
+        <div class="fsModal-plan plan-a">
+          <div class="fsModal-plan-tag">A</div>
+          <div class="fsModal-plan-label">Premium</div>
+          <div class="fsModal-plan-price">${p.a.precio}</div>
+          <div class="fsModal-plan-recur">${p.a.mensual}</div>
+          <ul class="fsModal-plan-list">${p.a.items.map(i=>`<li><i class="ti ti-check"></i>${i}</li>`).join('')}</ul>
+          <p class="fsModal-plan-best">${p.a.nota}</p>
+        </div>`;
+
+      overlay.classList.add('open');
+      overlay.querySelector('.fsModal-box').scrollTop = 0;
+    }
+
+    document.querySelectorAll('.sector-card').forEach(card => {
+      const sector = [...card.classList].find(c => c.startsWith('sector-') && c !== 'sector-card');
+      if (sector && SECTORES[sector]) {
+        card.addEventListener('click', () => abrirModal(sector));
+      }
+    });
+
+    closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') overlay.classList.remove('open'); });
+  })();
   </script>
 
 </body>

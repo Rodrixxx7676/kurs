@@ -114,8 +114,14 @@ app.UseHttpsRedirection();
 
 // ── Frontend Blazor WASM ─────────────────────────────────────────────────────
 // En producción el Dockerfile copia el publish de KursFront a wwwroot.
+// Blazor publica archivos .dat (datos ICU) cuya extensión no está en el mapa
+// MIME por defecto; sin esto devuelven 404 y la app se queda cargando.
 app.UseDefaultFiles();
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    ServeUnknownFileTypes = true,
+    DefaultContentType = "application/octet-stream"
+});
 
 app.UseCors("KursFrontend");
 app.UseRateLimiter();
